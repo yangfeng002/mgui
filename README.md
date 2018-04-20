@@ -79,14 +79,104 @@
      cnpm install gulp-less --save-dev //less转换
      npm install gulp-htmlmin --save-dev //html压缩
      cnpm install gulp-imagemin --save-dev //图片压缩
-     npm install gulp-concat --save-dev //代码合并
+     npm install gulp-concat --save-dev //代码合并(使用比较困难)
+     npm install gulp-useref --save-dev  //将多个文件压缩
      npm install gulp-jshint --save-dev //js检查
      npm install gulp-autoprefixer --save-dev //为css自动加前缀
      npm install --save-dev gulp-babel babel-preset-env //将ES6代码编译成ES5
+     cnpm install gulp-core --save-dev
      npm install gulp-csso --save-dev  //压缩优化css代码
+
+     npm install browser-sync --save-dev  //使用浏览器自动刷新
+
     5.gulp的使用
     gulp主要有5个方法：task，run，watch，src，dest
     详细介绍见：https://segmentfault.com/a/1190000002408159
+                https://www.gulpjs.com.cn/docs/api/
+    5.1 task
+       语法：gulp.task(name[, deps], fn)
+       --name
+         类型：string
+         任务的名字，如果你需要在命令行中运行你的某些任务，那么，请不要在名字中使用空格。
+       --deps
+         类型： Array
+         一个包含任务列表的数组，这些任务会在你当前任务运行之前完成。
+         注意： 你的任务是否在这些前置依赖的任务完成之前运行了？
+         请一定要确保你所依赖的任务列表中的任务都使用了正确的异步执行方式：使用一个 callback，或者返回一个 promise 或 stream。
+    5.2 watch
+      gulp.watch(glob[, opts], tasks)
+          glob  类型： String or Array
+              一个 glob 字符串，或者一个包含多个glob 字符串的数组，用来指定具体监控哪些文件的变动。
+          opts   类型： Object
+          tasks  类型： Array  需要在文件变动后执行的一个或者多个通过 gulp.task() 创建的 task 的名字
+          例如：
+            gulp.watch('js/**/*.js', ['uglify','reload']);
+
+       gulp.watch(glob[, opts, cb])
+       glob 类型： String or Array
+         一个 glob 字符串，或者一个包含多个 glob 字符串的数组，用来指定具体监控哪些文件的变动。
+      opts
+       类型： Object
+       传给 gaze 的参数。
+
+       cb(event) 类型： Function
+       每次变动需要执行的 callback。
+       gulp.watch('js/**/*.js', function(event) {
+         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+       });
+     5.3 src
+
+     5.4 dest
+
+
+
+
+   6.项目运用---mgui
+     1)创建目录结构
+      mgui
+         ---dist
+         ---src
+             ---css
+             ---js
+             ---less
+             ---fonts
+             ---images
+             ---index.html
+         ---gulpfile.js
+         ---package.json
+         ---README.md
+    2)创建任务
+      a)默认的任务：
+          gulp.task("default",function(){
+             //执行gulp，则会调用该段代码
+
+          })
+      b)sass/less转换代码
+        gulp.task("less",function () {
+          return gulp.src("src/less/mgui.less")
+               .pipe(less())
+               .pipe(gulp.dest('src/css'));
+        });
+
+      c)压缩合并js代码、css代码
+        gulp-useref语法：
+        <!-- build:<type> <path> -->
+        ... HTML Markup, list of script / link tags.
+        <!-- endbuild -->
+
+      d)压缩图片
+
+
+
+         Node中的通配符大部分时候，我们只需要用到下面4种匹配模式：
+             *.scss ： * 号匹配当前目录任意文件，所以这里 *.scss 匹配当前目录下所有scss文件
+             **/*.scss ：匹配当前目录及其子目录下的所有scss文件。
+             !not-me.scss ：！号移除匹配的文件，这里将移除not-me.scss
+             *.+(scss|sass) ：+号后面会跟着圆括号，里面的元素用|分割，匹配多个选项。这里将匹配scss和sass文件。
+
+
+      e)使用Browser Sync自动刷新
+
 
 
 
