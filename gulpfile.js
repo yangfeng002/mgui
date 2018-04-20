@@ -16,10 +16,6 @@ var uglify = require('gulp-uglify');
 //修改html,js，css代码保存后，浏览器自动刷新
 var browserSync = require('browser-sync');
 
-//演示一下任务，执行命令行 gulp hello
-/*gulp.task('hello',function () {
-   console.log("hello world");
-});*/
 
 //默认任务
 gulp.task("default",['watch'],function () {
@@ -50,7 +46,7 @@ gulp.task('uglify',['useref'],function () {
      //先压缩js文件
     return gulp.src('dist/js/main.min.js')
         .pipe(uglify())
-        .pipe(gulp.dest('src/js/'));
+        .pipe(gulp.dest('dist/js/'));
 });
 
 
