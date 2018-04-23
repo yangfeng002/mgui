@@ -42,7 +42,7 @@
 
     为什么要保存至package.json？因为node插件包相对来说非常庞大，所以不加入版本管理，
     将配置信息写入package.json并将其加入版本管理，其他开发者对应下载即可
-    ****（命令提示符执行npm install，则会根据package.json下载所有需要的包，npm install --production只下载dependencies节点的包）***。
+    ****（命令提示符执行npm install（cnpm install 淘宝镜像），则会根据package.json下载所有需要的包，npm install --production只下载dependencies节点的包）***。
 
     -------npm命令-------
     使用npm卸载插件：npm uninstall <name> [-g] [--save-dev]  PS：不要直接删除本地插件包
@@ -74,18 +74,21 @@
 
      注：我们全局安装了gulp，项目也安装了gulp，全局安装gulp是为了执行gulp任务，本地（项目）安装gulp则是为了调用gulp插件的功能。
     4.安装相关的gulp插件
-     npm install gulp-uglify --save-dev //js压缩
+     cnpm install gulp-uglify --save-dev //js压缩
      cnpm install gulp-sass --save-dev //sass转换
      cnpm install gulp-less --save-dev //less转换
-     npm install gulp-htmlmin --save-dev //html压缩
+     cnpm install gulp-clean-css --save-dev  css代码压缩
+     cnpm install gulp-htmlmin --save-dev //html压缩
      cnpm install gulp-imagemin --save-dev //图片压缩
-     npm install gulp-concat --save-dev //代码合并(使用比较困难)
-     npm install gulp-useref --save-dev  //将多个文件压缩
-     npm install gulp-jshint --save-dev //js检查
-     npm install gulp-autoprefixer --save-dev //为css自动加前缀
-     npm install --save-dev gulp-babel babel-preset-env //将ES6代码编译成ES5
+     cnpm install gulp-cache --save-dev  //使用 gulp-cache 插件可以减少重复压缩
+     cnpm install gulp-concat --save-dev //代码合并(使用比较困难)
+     cnpm install gulp-useref --save-dev  //将多个文件压缩
+     cnpm install gulp-jshint --save-dev //js检查
+     cnpm install gulp-autoprefixer --save-dev //为css自动加前缀
+     cnpm install --save-dev gulp-babel babel-preset-env //将ES6代码编译成ES5
      cnpm install gulp-core --save-dev
-     npm install gulp-csso --save-dev  //压缩优化css代码
+     cnpm install gulp-csso --save-dev  //压缩优化css代码
+     npm install del --save-dev  //由于我们是自动生成文件，我们不想旧文件掺杂进来
 
      npm install browser-sync --save-dev  //使用浏览器自动刷新
 
@@ -158,15 +161,39 @@
                .pipe(gulp.dest('src/css'));
         });
 
-      c)压缩合并js代码、css代码
+      c)合并js代码、css代码
         gulp-useref语法：
         <!-- build:<type> <path> -->
         ... HTML Markup, list of script / link tags.
         <!-- endbuild -->
 
-      d)压缩图片
+        gulpfile.js中
+        var useref = require('gulp-useref');
+        useref()
+
+      d)压缩js代码
+      var uglify = require('gulp-uglify');
+          uglify()
+
+      e)压缩css代码
+        var cleanCSS = require('gulp-clean-css');
+        cleanCss()
+
+      f)压缩图片
+        var imagemin = require('gulp-imagemin');
+        var cache  = require('gulp-cache');
+
+        gulp-imagemin方法调用时的相关属性
+         optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
+         progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+         interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+         multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
 
 
+      g)gulp-if 条件判断 gulpIf(condition,执行的代码)
+      h)del
+       由于我们是自动生成文件，我们不想旧文件掺杂进来。
+       npm install del --save-dev
 
          Node中的通配符大部分时候，我们只需要用到下面4种匹配模式：
              *.scss ： * 号匹配当前目录任意文件，所以这里 *.scss 匹配当前目录下所有scss文件
@@ -176,6 +203,8 @@
 
 
       e)使用Browser Sync自动刷新
+
+
 
 
 

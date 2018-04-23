@@ -9,20 +9,26 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 //代码合并
 var useref = require('gulp-useref');
-//代码压缩
+//js代码压缩
 var uglify = require('gulp-uglify');
-
+//css代码压缩
+var cleanCSS = require('gulp-clean-css');
+//gulp-if
+var gulpIf = require('gulp-if');
+//压缩图片
+var imagemin = require('gulp-imagemin');
+var cache  = require('gulp-cache');
 
 //修改html,js，css代码保存后，浏览器自动刷新
 var browserSync = require('browser-sync');
 
 
-//默认任务
+/* 默认任务*/
 gulp.task("default",['watch'],function () {
     console.log("默认任务");
 });
 
-//task1:less转换成css任务
+/* task1:less转换成css任务 */
 gulp.task("less",function () {
   //此处表示返回一个stream
   return gulp.src("src/less/mgui.less")
@@ -34,19 +40,32 @@ gulp.task("less",function () {
 });
 
 //task2  css代码压缩合并
-
-
+gulp.task('csscompress', function() {
+    // 1. 找到文件
+    return  gulp.src('dist/css/*.css')
+    // 2. 压缩文件
+        .pipe(cleanCSS())
+        // 3. 另存压缩后的文件
+        .pipe(gulp.dest('dist/css'));
+});
 
 //task3 图片压缩
-
+gulp.task('imageMin',function () {
+    return gulp.src('src/images/**/*.+(png|jpg|jpeg|gif|svg|ico)')
+       // Caching images that ran through imagemin
+        .pipe(cache(imagemin({progressive: true})))
+        .pipe(gulp.dest('dist/images'))
+});
 
 
 //task4:js压缩 (单个压缩可以实现)
-gulp.task('uglify',['useref'],function () {
-     //先压缩js文件
+gulp.task('jscompress', function() {
+    // 1. 找到文件
     return gulp.src('dist/js/main.min.js')
+    // 2. 压缩文件
         .pipe(uglify())
-        .pipe(gulp.dest('dist/js/'));
+        // 3. 另存压缩后的文件
+        .pipe(gulp.dest('dist/js'));
 });
 
 
@@ -56,6 +75,13 @@ gulp.task('useref', function(){
     return gulp.src('src/*.html')
         .pipe(useref())
         .pipe(gulp.dest('dist'));
+});
+
+gulp.task('uglify',['useref'],function () {
+    //先压缩js文件
+    return gulp.src('dist/js/main.min.js')
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js/'));
 });
 
 // 设置任务---架设静态服务器（browser-sync）
@@ -69,10 +95,10 @@ gulp.task('browserSync', function () {
 });
 
 //gulp watch 监控任务,执行watch之前先执行browserSync和less任务
-gulp.task("watch",['browserSync','less'],function (event) {
+gulp.task("watch",['browserSync','less','useref','jscompress','csscompress'],function (event) {
     console.log(event);
     gulp.watch("src/less/**/*.less",['less']);//监控less文件
-    gulp.watch('src/*.html', browserSync.reload);
-    gulp.watch('src/js/**/*.js', browserSync.reload);
+    gulp.watch('src/*.html', browserSync.reload);//监控html
+    gulp.watch('src/js/**/*.js', browserSync.reload);//监控js文件
 
 });
