@@ -17,7 +17,15 @@ var cleanCSS = require('gulp-clean-css');
 var gulpIf = require('gulp-if');
 //压缩图片
 var imagemin = require('gulp-imagemin');
-var cache  = require('gulp-cache');
+var cache  = require('gulp-cache');//没有更新的就不会压缩
+//删除文件
+var del = require('del');
+//代码执行顺序
+var runSequence = require('run-sequence');
+
+
+
+
 
 //修改html,js，css代码保存后，浏览器自动刷新
 var browserSync = require('browser-sync');
@@ -39,7 +47,7 @@ gulp.task("less",function () {
        }))
 });
 
-//task2  css代码压缩合并
+/*  task2  css代码压缩合并*/
 gulp.task('csscompress', function() {
     // 1. 找到文件
     return  gulp.src('dist/css/*.css')
@@ -49,7 +57,7 @@ gulp.task('csscompress', function() {
         .pipe(gulp.dest('dist/css'));
 });
 
-//task3 图片压缩
+/*  task3 图片压缩 */
 gulp.task('imageMin',function () {
     return gulp.src('src/images/**/*.+(png|jpg|jpeg|gif|svg|ico)')
        // Caching images that ran through imagemin
@@ -58,7 +66,7 @@ gulp.task('imageMin',function () {
 });
 
 
-//task4:js压缩 (单个压缩可以实现)
+/*task4:js压缩 (单个压缩可以实现)*/
 gulp.task('jscompress', function() {
     // 1. 找到文件
     return gulp.src('dist/js/main.min.js')
@@ -69,7 +77,7 @@ gulp.task('jscompress', function() {
 });
 
 
-// task 5 useref 代码合并(包括js、css代码合并)
+/*task 5 useref 代码合并(包括js、css代码合并)*/
 gulp.task('useref', function(){
     //实现代码压缩uglify()合并useref()
     return gulp.src('src/*.html')
@@ -82,6 +90,16 @@ gulp.task('uglify',['useref'],function () {
     return gulp.src('dist/js/main.min.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'));
+});
+
+/* task6 清除文件目录 */
+gulp.task('clean',function () {
+    del('dist');
+});
+//images变化小，选择排除
+gulp.task('clean:dist', function(callback){
+    del(['dist/**/*', '!dist/images', '!dist/images/**/*'], function () {
+    })
 });
 
 // 设置任务---架设静态服务器（browser-sync）

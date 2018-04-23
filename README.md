@@ -88,7 +88,8 @@
      cnpm install --save-dev gulp-babel babel-preset-env //将ES6代码编译成ES5
      cnpm install gulp-core --save-dev
      cnpm install gulp-csso --save-dev  //压缩优化css代码
-     npm install del --save-dev  //由于我们是自动生成文件，我们不想旧文件掺杂进来
+     cnpm install del --save-dev  //由于我们是自动生成文件，我们不想旧文件掺杂进来
+     cnpm install run-sequence --save-dev //保证任务执行的顺序
 
      npm install browser-sync --save-dev  //使用浏览器自动刷新
 
