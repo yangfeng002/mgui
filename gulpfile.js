@@ -57,6 +57,21 @@ gulp.task('csscompress', function() {
         // 3. 另存压缩后的文件
         .pipe(gulp.dest('dist/css'));
 });
+//css添加前缀
+gulp.task('autoprefix',function () {
+   return gulp.src('dist/css/**/*.css')
+       .pipe(autoprefixer({
+           browsers:['last 2 versions', 'Android >= 4.0'],
+           cascade: true, //是否美化属性值 默认：true 像这样：
+           //-webkit-transform: rotate(45deg);
+           //        transform: rotate(45deg);
+           remove:true //是否去掉不必要的前缀 默认：true
+
+       }))   //添加前缀
+       .pipe(gulp.dest('dist/css'))
+
+});
+
 
 /*  task3 图片压缩 */
 gulp.task('imageMin',function () {
@@ -123,6 +138,6 @@ gulp.task("watch",function (event) {
 
 /* task7按顺序执行 */
 gulp.task('runSequence', function(callback) {
-    runSequence('clean','useref',['csscompress','jscompress','imageMin'],'watch',
+    runSequence('clean','useref',['autoprefix','csscompress','jscompress','imageMin'],'watch',
         callback);
 });
