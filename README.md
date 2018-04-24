@@ -203,10 +203,32 @@
              *.+(scss|sass) ：+号后面会跟着圆括号，里面的元素用|分割，匹配多个选项。这里将匹配scss和sass文件。
 
 
-      e)使用Browser Sync自动刷新
+      i)使用Browser Sync自动刷新
+      j)run-sequence同步执行
+       使用方法
+       执行前端代码自动构建，一般会分为以下几个步骤
+       1. 清理目标目录（任务：clean）
+       2. 代码压缩打包，这其中包括对JS，CSS，HTML以及图片的处理（任务：minify:js，minify:css，minify:html，minify:image）
+       3. 监控（任务：watch）
 
+       首先执行第一步操作，清理目标目录，清理完成后方可执行打包动作。
+       然后执行第二步操作，这个步骤里又可以细分为几个任务，但是几个任务相互之间并没有依赖关系，因此可以并行。
+       最后执行第三步操作，监控代码变改，必须在第二步所有任务全部执行完成后方可执行
 
+       最终代码
+    
+       var gulp        = require('gulp'),
+           runSequence = require('run-sequence'),
+           pump        = require('pump');
 
+       gulp.task('default', function(cb) {
+           runSequence(
+               'clean', // 第一步：清理目标目录
+               ['minify:js', 'minify:css', 'minify:html', 'minify:image'], // 第二步：打包
+               'watch', // 第三步：监控
+               cb
+           );
+       });
 
 
 

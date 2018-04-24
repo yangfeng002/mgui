@@ -13,6 +13,8 @@ var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 //css代码压缩
 var cleanCSS = require('gulp-clean-css');
+//自动添加前缀
+var autoprefixer = require('gulp-autoprefixer');
 //gulp-if
 var gulpIf = require('gulp-if');
 //压缩图片
@@ -22,9 +24,8 @@ var cache  = require('gulp-cache');//没有更新的就不会压缩
 var del = require('del');
 //代码执行顺序
 var runSequence = require('run-sequence');
-
-
-
+//gulp-autoprefixer 自动添加前缀
+ var autoprefixer = require('gulp-autoprefixer');
 
 
 //修改html,js，css代码保存后，浏览器自动刷新
@@ -64,7 +65,6 @@ gulp.task('imageMin',function () {
         .pipe(cache(imagemin({progressive: true})))
         .pipe(gulp.dest('dist/images'))
 });
-
 
 /*task4:js压缩 (单个压缩可以实现)*/
 gulp.task('jscompress', function() {
@@ -112,11 +112,17 @@ gulp.task('browserSync', function () {
     });
 });
 
-//gulp watch 监控任务,执行watch之前先执行browserSync和less任务
-gulp.task("watch",['browserSync','less','useref','jscompress','csscompress'],function (event) {
+/*gulp watch 监控任务,执行watch之前先执行browserSync和less任务 */
+gulp.task("watch",function (event) {
     console.log(event);
     gulp.watch("src/less/**/*.less",['less']);//监控less文件
     gulp.watch('src/*.html', browserSync.reload);//监控html
     gulp.watch('src/js/**/*.js', browserSync.reload);//监控js文件
 
+});
+
+/* task7按顺序执行 */
+gulp.task('runSequence', function(callback) {
+    runSequence('clean','useref',['csscompress','jscompress','imageMin'],'watch',
+        callback);
 });
