@@ -12,17 +12,25 @@
       <script src="js/main.js"></script>
     <!-- endbuild -->
 
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格，该补丁来源于社区 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 <body>
-   <section id="" class="mg-container" >
+   <section id="" class="mgui-main" >
        <!--头部导航 header-->
         <header>
            经分模块化
         </header>
         <!--左侧导航 left-nav -->
        <nav>
-
+          <ul>
+              <li>概述说明</li>
+              <li>基本元素</li>
+          </ul>
        </nav>
        <!--右侧内容部分 main-->
        <section class="content-box">

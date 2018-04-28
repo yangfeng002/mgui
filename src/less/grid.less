@@ -1,22 +1,241 @@
-html{
-  font-family: '宋体';
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -ms-overflow-style: scrollbar;
-  -webkit-tap-highlight-color: transparent;
+/*响应式栅格样式*/
+/* 基本布局 */
+.mgui-main{
+  position: relative;
+  width: 1140px;
+  margin: 0 auto;
 }
-body{
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: left;
-  background-color: #fff;
+.mgui-header{
+  //头部样式
+  position: relative;
+  z-index: 1000;
+  height: 60px;
+  a{
+    &:hover{
+      /*transition过渡效果 pdtd:property(例如width,height) duration  timing-function(快慢效果)  delay：规定从何时开始 */
+      transition: all .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -o-transition: all .5s;
+      -ms-transition:all .5s;
+    }
+  }
 }
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+.mgui-side{
+  /*左侧样式固定*/
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 200px;
+  overflow-x: hidden;
 }
+.mgui-side-scroll{
+  position: relative;
+  width: 220px;
+  height: 100%;
+  overflow-x: hidden;
+}
+.mgui-body{
+  /*正文部分或者是右侧内容部分*/
+  position: absolute;
+  left: 200px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 998;
+  width: auto;
+  overflow: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* 后台框架大布局 */
+.mgui-layout-body{overflow: hidden;}
+.mgui-layout-admin .mgui-header{background-color: #23262E;}
+.mgui-layout-admin .mgui-side{top: 60px; width: 200px; overflow-x: hidden;}
+.mgui-layout-admin .mgui-body{top: 60px; bottom: 44px;}
+.mgui-layout-admin .mgui-main{width: auto; margin: 0 15px;}
+.mgui-layout-admin .mgui-footer{position: fixed; left: 200px; right: 0; bottom: 0; height: 44px; line-height: 44px; padding: 0 15px; background-color: #eee;}
+.mgui-layout-admin .mgui-logo{position: absolute; left: 0; top: 0; width: 200px; height: 100%; line-height: 60px; text-align: center; color: #009688; font-size: 16px;}
+.mgui-layout-admin .mgui-header .mgui-nav{background: none;}
+.mgui-layout-left{position: absolute !important; left: 200px; top: 0;}
+.mgui-layout-right{position: absolute !important; right: 0; top: 0;}
+
+/* 栅格布局 */
+.mgui-container{position: relative; margin: 0 auto; padding: 0 15px; box-sizing: border-box;}
+.mgui-fluid{position: relative; margin: 0 auto; padding: 0 15px;}
+
+.mgui-row:before, .mgui-row:after{content: ''; display: block; clear: both;}
+.mgui-col-xs1, .mgui-col-xs2, .mgui-col-xs3, .mgui-col-xs4, .mgui-col-xs5, .mgui-col-xs6, .mgui-col-xs7, .mgui-col-xs8, .mgui-col-xs9, .mgui-col-xs10, .mgui-col-xs11, .mgui-col-xs12
+,.mgui-col-sm1, .mgui-col-sm2, .mgui-col-sm3, .mgui-col-sm4, .mgui-col-sm5, .mgui-col-sm6, .mgui-col-sm7, .mgui-col-sm8, .mgui-col-sm9, .mgui-col-sm10, .mgui-col-sm11, .mgui-col-sm12
+,.mgui-col-md1, .mgui-col-md2, .mgui-col-md3, .mgui-col-md4, .mgui-col-md5, .mgui-col-md6, .mgui-col-md7, .mgui-col-md8, .mgui-col-md9, .mgui-col-md10, .mgui-col-md11, .mgui-col-md12
+,.mgui-col-lg1, .mgui-col-lg2, .mgui-col-lg3, .mgui-col-lg4, .mgui-col-lg5, .mgui-col-lg6, .mgui-col-lg7, .mgui-col-lg8, .mgui-col-lg9, .mgui-col-lg10, .mgui-col-lg11, .mgui-col-lg12
+{position: relative; display: block; box-sizing: border-box;}
+
+.mgui-col-xs1, .mgui-col-xs2, .mgui-col-xs3, .mgui-col-xs4, .mgui-col-xs5, .mgui-col-xs6, .mgui-col-xs7, .mgui-col-xs8, .mgui-col-xs9, .mgui-col-xs10, .mgui-col-xs11, .mgui-col-xs12{float: left;}
+.mgui-col-xs1{width: 8.33333333%;}
+.mgui-col-xs2{width: 16.66666667%;}
+.mgui-col-xs3{width: 25%;}
+.mgui-col-xs4{width: 33.33333333%;}
+.mgui-col-xs5{width: 41.66666667%;}
+.mgui-col-xs6{width: 50%;}
+.mgui-col-xs7{width: 58.33333333%;}
+.mgui-col-xs8{width: 66.66666667%;}
+.mgui-col-xs9{width: 75%;}
+.mgui-col-xs10{width: 83.33333333%;}
+.mgui-col-xs11{width: 91.66666667%;}
+.mgui-col-xs12{width: 100%;}
+
+.mgui-col-xs-offset1{margin-left: 8.33333333%;}
+.mgui-col-xs-offset2{margin-left: 16.66666667%;}
+.mgui-col-xs-offset3{margin-left: 25%;}
+.mgui-col-xs-offset4{margin-left: 33.33333333%;}
+.mgui-col-xs-offset5{margin-left: 41.66666667%;}
+.mgui-col-xs-offset6{margin-left: 50%;}
+.mgui-col-xs-offset7{margin-left: 58.33333333%;}
+.mgui-col-xs-offset8{margin-left: 66.66666667%;}
+.mgui-col-xs-offset9{margin-left: 75%;}
+.mgui-col-xs-offset10{margin-left: 83.33333333%;}
+.mgui-col-xs-offset11{margin-left: 91.66666667%;}
+.mgui-col-xs-offset12{margin-left: 100%;}
+
+/* 超小屏幕(手机) */
+@media screen and (max-width: 768px) {
+  .mgui-hide-xs{display: none!important;}
+  .mgui-show-xs-block{display: block!important;}
+  .mgui-show-xs-inline{display: inline!important;}
+  .mgui-show-xs-inline-block{display: inline-block!important;}
+}
+
+/* 小型屏幕(平板) */
+@media screen and (min-width: 768px) {
+  .mgui-container{width: 750px;}
+  .mgui-hide-sm{display: none!important;}
+  .mgui-show-sm-block{display: block!important;}
+  .mgui-show-sm-inline{display: inline!important;}
+  .mgui-show-sm-inline-block{display: inline-block!important;}
+
+  .mgui-col-sm1, .mgui-col-sm2, .mgui-col-sm3, .mgui-col-sm4, .mgui-col-sm5, .mgui-col-sm6, .mgui-col-sm7, .mgui-col-sm8, .mgui-col-sm9, .mgui-col-sm10, .mgui-col-sm11, .mgui-col-sm12{float: left;}
+  .mgui-col-sm1{width: 8.33333333%;}
+  .mgui-col-sm2{width: 16.66666667%;}
+  .mgui-col-sm3{width: 25%;}
+  .mgui-col-sm4{width: 33.33333333%;}
+  .mgui-col-sm5{width: 41.66666667%;}
+  .mgui-col-sm6{width: 50%;}
+  .mgui-col-sm7{width: 58.33333333%;}
+  .mgui-col-sm8{width: 66.66666667%;}
+  .mgui-col-sm9{width: 75%;}
+  .mgui-col-sm10{width: 83.33333333%;}
+  .mgui-col-sm11{width: 91.66666667%;}
+  .mgui-col-sm12{width: 100%;}
+  /* 列偏移 */
+  .mgui-col-sm-offset1{margin-left: 8.33333333%;}
+  .mgui-col-sm-offset2{margin-left: 16.66666667%;}
+  .mgui-col-sm-offset3{margin-left: 25%;}
+  .mgui-col-sm-offset4{margin-left: 33.33333333%;}
+  .mgui-col-sm-offset5{margin-left: 41.66666667%;}
+  .mgui-col-sm-offset6{margin-left: 50%;}
+  .mgui-col-sm-offset7{margin-left: 58.33333333%;}
+  .mgui-col-sm-offset8{margin-left: 66.66666667%;}
+  .mgui-col-sm-offset9{margin-left: 75%;}
+  .mgui-col-sm-offset10{margin-left: 83.33333333%;}
+  .mgui-col-sm-offset11{margin-left: 91.66666667%;}
+  .mgui-col-sm-offset12{margin-left: 100%;}
+}
+/* 中型屏幕(桌面) */
+@media screen and (min-width: 992px) {
+  .mgui-container{width: 970px;}
+  .mgui-hide-md{display: none!important;}
+  .mgui-show-md-block{display: block!important;}
+  .mgui-show-md-inline{display: inline!important;}
+  .mgui-show-md-inline-block{display: inline-block!important;}
+
+  .mgui-col-md1, .mgui-col-md2, .mgui-col-md3, .mgui-col-md4, .mgui-col-md5, .mgui-col-md6, .mgui-col-md7, .mgui-col-md8, .mgui-col-md9, .mgui-col-md10, .mgui-col-md11, .mgui-col-md12{float: left;}
+  .mgui-col-md1{width: 8.33333333%;}
+  .mgui-col-md2{width: 16.66666667%;}
+  .mgui-col-md3{width: 25%;}
+  .mgui-col-md4{width: 33.33333333%;}
+  .mgui-col-md5{width: 41.66666667%;}
+  .mgui-col-md6{width: 50%;}
+  .mgui-col-md7{width: 58.33333333%;}
+  .mgui-col-md8{width: 66.66666667%;}
+  .mgui-col-md9{width: 75%;}
+  .mgui-col-md10{width: 83.33333333%;}
+  .mgui-col-md11{width: 91.66666667%;}
+  .mgui-col-md12{width: 100%;}
+  /* 列偏移 */
+  .mgui-col-md-offset1{margin-left: 8.33333333%;}
+  .mgui-col-md-offset2{margin-left: 16.66666667%;}
+  .mgui-col-md-offset3{margin-left: 25%;}
+  .mgui-col-md-offset4{margin-left: 33.33333333%;}
+  .mgui-col-md-offset5{margin-left: 41.66666667%;}
+  .mgui-col-md-offset6{margin-left: 50%;}
+  .mgui-col-md-offset7{margin-left: 58.33333333%;}
+  .mgui-col-md-offset8{margin-left: 66.66666667%;}
+  .mgui-col-md-offset9{margin-left: 75%;}
+  .mgui-col-md-offset10{margin-left: 83.33333333%;}
+  .mgui-col-md-offset11{margin-left: 91.66666667%;}
+  .mgui-col-md-offset12{margin-left: 100%;}
+}
+/* 大型屏幕(桌面) */
+@media screen and (min-width: 1200px) {
+  .mgui-container{width: 1170px;}
+  .mgui-hide-lg{display: none!important;}
+  .mgui-show-lg-block{display: block!important;}
+  .mgui-show-lg-inline{display: inline!important;}
+  .mgui-show-lg-inline-block{display: inline-block!important;}
+
+  .mgui-col-lg1, .mgui-col-lg2, .mgui-col-lg3, .mgui-col-lg4, .mgui-col-lg5, .mgui-col-lg6, .mgui-col-lg7, .mgui-col-lg8, .mgui-col-lg9, .mgui-col-lg10, .mgui-col-lg11, .mgui-col-lg12{float: left;}
+  .mgui-col-lg1{width: 8.33333333%;}
+  .mgui-col-lg2{width: 16.66666667%;}
+  .mgui-col-lg3{width: 25%;}
+  .mgui-col-lg4{width: 33.33333333%;}
+  .mgui-col-lg5{width: 41.66666667%;}
+  .mgui-col-lg6{width: 50%;}
+  .mgui-col-lg7{width: 58.33333333%;}
+  .mgui-col-lg8{width: 66.66666667%;}
+  .mgui-col-lg9{width: 75%;}
+  .mgui-col-lg10{width: 83.33333333%;}
+  .mgui-col-lg11{width: 91.66666667%;}
+  .mgui-col-lg12{width: 100%;}
+  /* 列偏移 */
+  .mgui-col-lg-offset1{margin-left: 8.33333333%;}
+  .mgui-col-lg-offset2{margin-left: 16.66666667%;}
+  .mgui-col-lg-offset3{margin-left: 25%;}
+  .mgui-col-lg-offset4{margin-left: 33.33333333%;}
+  .mgui-col-lg-offset5{margin-left: 41.66666667%;}
+  .mgui-col-lg-offset6{margin-left: 50%;}
+  .mgui-col-lg-offset7{margin-left: 58.33333333%;}
+  .mgui-col-lg-offset8{margin-left: 66.66666667%;}
+  .mgui-col-lg-offset9{margin-left: 75%;}
+  .mgui-col-lg-offset10{margin-left: 83.33333333%;}
+  .mgui-col-lg-offset11{margin-left: 91.66666667%;}
+  .mgui-col-lg-offset12{margin-left: 100%;}
+}
+
+/* 列间隔 */.mgui-col-space1{margin: -0.5px;}
+.mgui-col-space1>*{padding: 0.5px;}
+.mgui-col-space3{margin: -1.5px;}
+.mgui-col-space3>*{padding: 1.5px;}
+.mgui-col-space5{margin: -2.5px;}
+.mgui-col-space5>*{padding: 2.5px;}
+.mgui-col-space8{margin: -3.5px;}
+.mgui-col-space8>*{padding: 3.5px;}
+.mgui-col-space10{margin: -5px;}
+.mgui-col-space10>*{padding: 5px;}
+.mgui-col-space12{margin: -6px;}
+.mgui-col-space12>*{padding: 6px;}
+.mgui-col-space15{margin: -7.5px;}
+.mgui-col-space15>*{padding: 7.5px;}
+.mgui-col-space18{margin: -9px;}
+.mgui-col-space18>*{padding: 9px;}
+.mgui-col-space20{margin: -10px;}
+.mgui-col-space20>*{padding: 10px;}
+.mgui-col-space22{margin: -11px;}
+.mgui-col-space22>*{padding: 11px;}
+.mgui-col-space25{margin: -12.5px;}
+.mgui-col-space25>*{padding: 12.5px;}
+.mgui-col-space30{margin: -15px;}
+.mgui-col-space30>*{padding: 15px;}
