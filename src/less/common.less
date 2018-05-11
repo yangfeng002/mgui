@@ -1,0 +1,75 @@
+/* 
+*Created by fengyang on 2018/5/8
+**/
+/** 初始化 **/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td,form,pre{
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);//该属性只用于ios,点击按钮或者链接的时候高亮的颜色
+}
+a{
+  color: #333;
+  text-decoration:none;
+  &:hover{
+    outline:0;/*链接点击的时候会有边框，将其置为0*/
+    color: #777;
+  }
+  &:active{
+    outline: 0;;/*链接点击的时候会有边框，将其置为0*/
+  }
+  cite{
+    font-style: normal; *cursor:pointer;
+  }
+
+}
+img{
+  display: inline-block;
+  border: none;
+  vertical-align: middle;/*图片和其他元素对齐就要设置该属性*/
+}
+li{
+  list-style:none;/*列表序号点去掉*/
+}
+table{
+  border-collapse: collapse;/*表格边框合并*/
+  border-spacing: 0;
+}
+h1,h2,h3{
+  font-weight: 400;
+}
+h4, h5, h6{
+  font-size: 100%;
+  font-weight: 400;
+}
+button,input,select,textarea{
+  font-size: 100%;
+}
+input,button,textarea,select,optgroup,option{
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  outline: 0;
+}
+pre{
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -webkit-pre-wrap;
+  white-space: ms-pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+/** 初始化全局标签 **/
+body{
+  line-height: 24px;
+  font: 14px Helvetica Neue,Helvetica,PingFang SC,"微软雅黑",Tahoma,Arial,sans-serif;
+}
+/*横线*/
+hr{
+  height: 1px;
+  margin: 10px 0;
+  border: 0;
+  clear: both;
+}
+
