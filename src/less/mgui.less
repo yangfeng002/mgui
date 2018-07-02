@@ -1,3 +1,119 @@
 @charset "UTF-8";
+@import  "common";
 @import "grid";/*引用栅格布局文件*/
+@import 'style';
+/* base布局 */
+.mgui-main{
+  position: relative;
+  width: 1140px;
+  margin: 0 auto;
+}
+.mgui-header{
+  //头部样式
+  position: relative;
+  z-index: 1000;
+  height: 60px;
+  a{
+    &:hover{
+      /*transition过渡效果 pdtd:property(例如width,height) duration  timing-function(快慢效果)  delay：规定从何时开始 */
+      transition: all .5s;
+      -webkit-transition: all .5s;
+      -moz-transition: all .5s;
+      -o-transition: all .5s;
+      -ms-transition:all .5s;
+    }
+  }
+}
+.mgui-side{
+  /*左侧样式固定*/
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 200px;
+  overflow-x: hidden;
+}
+.mgui-side-scroll{
+  position: relative;
+  width: 220px;
+  height: 100%;
+  overflow-x: hidden;
+}
+.mgui-body{
+  /*正文部分或者是右侧内容部分*/
+  position: absolute;
+  left: 200px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 998;
+  width: auto;
+  overflow: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
 
+/* 后台框架大布局 */
+.mgui-layout-body{
+  overflow: hidden;
+}
+/*布局admin*/
+.mgui-layout-admin{
+  .mgui-header{
+    /*头部样式*/
+    background-color: #23262E;
+    .mgui-nav{
+      background: none;
+    }
+  }
+  .mgui-logo {
+    /*logo样式*/
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    line-height: 60px;
+    text-align: center;
+    color: #009688;
+    font-size: 16px;
+  }
+  .mgui-side{
+    /*左侧导航*/
+    top: 60px;
+    width: 200px;
+    overflow-x: hidden;
+  }
+  .mgui-body{
+    top: 60px;
+    bottom: 44px;
+  }
+  .mgui-main{
+    width: auto;
+    margin: 0 15px;
+  }
+  .mgui-footer{
+    /*底部样式*/
+    position: fixed;
+    left: 200px;
+    right: 0;
+    bottom: 0;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 15px;
+    background-color: #eee;
+  }
+}
+/*左侧布局*/
+.mgui-layout-left{
+  position: absolute !important;
+  left: 200px;
+  top: 0;
+}
+/*右侧布局*/
+.mgui-layout-right{
+  position: absolute !important;
+  right: 0;
+  top: 0;
+}

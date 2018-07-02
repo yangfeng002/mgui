@@ -1,4 +1,4 @@
-/* 
+/*
 *Created by fengyang on 2018/5/8
 **/
 /** 初始化 **/
@@ -54,8 +54,6 @@ input,button,textarea,select,optgroup,option{
 pre{
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
-  white-space: -webkit-pre-wrap;
-  white-space: ms-pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
 }
@@ -72,4 +70,181 @@ hr{
   border: 0;
   clear: both;
 }
+/*
+默认主题
+*/
+/* 背景颜色 */
+.mgui-bg-red{background-color: #ff4400 !important; color: #fff!important;} /*赤*/
+.mgui-bg-orange{background-color: #FCA83C!important; color: #fff!important;} /*橙*/
+.mgui-bg-green{background-color: #5EC16F!important; color: #fff!important;} /*绿*/
+.mgui-bg-cyan{background-color: #2F4056!important; color: #fff!important;} /*青*/
+.mgui-bg-blue{background-color: #14B8D4!important; color: #fff!important;} /*蓝*/
+.mgui-bg-black{background-color: #393D49!important; color: #fff!important;} /*黑*/
+.mgui-bg-gray{background-color: #71889F!important; color: #fff!important;} /*灰*/
+.mgui-bg-purple{background-color: #9962BD!important; color: #fff!important;}/*紫*/
+
+/* 文本区域 */
+.mgui-text{
+  line-height: 22px;
+  font-size: 14px;
+  color: #666;
+  h1{
+    font-size: 30px;
+  }
+  h2{
+    font-size:24px;
+  }
+  h3{
+    font-size: 18px;
+  }
+  h1,h2,h3{
+    font-weight: 500;
+    color: #333;
+  }
+  a:not(.mgui-btn){
+    color: #01AAED;
+      &:hover{
+        text-decoration: underline;
+      }
+  }
+  ul{
+    padding: 5px 0 5px 15px;
+    li{
+      margin-top: 5px;
+      list-style-type: disc;
+    }
+  }
+}
+
+/*按钮组*/
+.migu-btn{
+  display: inline-block;
+  vertical-align: middle;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 18px;
+  background-color: #89C349;
+  color: #fff;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 14px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  &:hover{
+    opacity: 0.8;
+    filter:alpha(opacity=80);
+    color: #fff;
+  }
+  &:active{
+    opacity: 1;
+    filter:alpha(opacity=100);
+  }
+  &+.mgui-btn{
+    /* + 为兄弟选择器 */
+    margin-left: 10px;
+  }
+}
+
+/* 按钮容器 */
+.mgui-btn-container{font-size: 0;}
+.mgui-btn-container .mgui-btn{margin-right: 10px; margin-bottom: 10px;}
+.mgui-btn-container .mgui-btn+.mgui-btn{margin-left: 0;}
+.mgui-table .mgui-btn-container .mgui-btn{margin-bottom: 9px;}
+
+/* 圆角 */
+.mgui-btn-radius{border-radius: 100px;}
+.mgui-btn .mgui-icon{margin-right: 3px; font-size: 18px; vertical-align: bottom; vertical-align: middle\0;}
+
+/* 原始 */
+.mgui-btn-primary{
+  border: 1px solid #C9C9C9;
+  background-color: #fff;
+  color: #555;
+  &:hover{
+    border-color: #89C349;
+    color: #333;
+  }
+}
+/* 百搭 */
+.mgui-btn-normal{background-color: #1E9FFF;}
+/* 暖色 */
+.mgui-btn-warm{background-color: #FFB800;}
+/* 警告 */
+.mgui-btn-danger{background-color: #ff4400;}
+/* 禁用 */
+.mgui-btn-disabled,.mgui-btn-disabled:hover,.mgui-btn-disabled:active{
+  border: 1px solid #e6e6e6;
+  background-color: #FBFBFB;
+  color: #C9C9C9;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* 大型 */
+.mgui-btn-lg{
+  height: 44px;
+  line-height: 44px;
+  padding: 0 25px;
+  font-size: 16px;
+}
+/* 小型 */
+.mgui-btn-sm{
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+  i{
+    font-size: 16px !important;
+  }
+}
+/* 超小 */
+.mgui-btn-xs{
+  height: 22px;
+  line-height: 22px;
+  padding: 0 5px;
+  font-size: 12px;
+  i{
+    font-size: 14px !important;
+  }
+}
+/* 按钮组 */
+.mgui-btn-group{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 0;
+  .mgui-btn{
+    margin-left: 0!important;
+    margin-right: 0!important;
+    border-left: 1px solid rgba(255,255,255,.5);
+    border-radius: 0;
+    &:first-child{
+      border-left: none;
+      border-radius: 2px 0 0 2px;
+    }
+    + .mgui-btn{margin-left: 0;}
+  }
+  .mgui-btn-primary{
+    border-left: none;
+    &:hover{
+      border-color: #C9C9C9;
+      color: #009688;
+    }
+    &:first-child{
+      border-left: 1px solid #c9c9c9;
+    }
+    &:last-child{
+      border-radius: 0 2px 2px 0;
+    }
+
+  }
+  + .mgui-btn-group{
+    margin-left: 10px;
+  }
+}
+/* 流体 */
+.mgui-btn-fluid{width: 100%;}
 

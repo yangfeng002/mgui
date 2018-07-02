@@ -12,7 +12,7 @@
     <!--build:js js/main.min.js  -->
      <!-- <script src="js/lib/a-library.js"></script>
       <script src="js/lib/another-library.js"></script>-->
-      <script src="js/main.js"></script>
+      <script src="js/common.js"></script>
     <!-- endbuild -->
 
     <!-- 让IE8/9支持媒体查询，从而兼容栅格，该补丁来源于社区 -->
@@ -23,11 +23,14 @@
 
 </head>
 <body>
-   <section id="" class="mgui-main">
-       <!--头部导航 header-->
-        <header class="mgui-header">
-           经分模块化
-        </header>
+    <!--头部导航 header-->
+    <header class="mgui-header header">
+        <div class="">
+            <a href="#" class="logo">经分模块化</a>
+        </div>
+    </header>
+    <!--导航和右侧内容-->
+   <section  class="">
         <!--左侧导航 left-nav -->
        <nav>
           <ul>
@@ -36,8 +39,8 @@
           </ul>
        </nav>
        <!--右侧内容部分 main-->
-       <section class="content-box">
-
+       <section class="mgui-body">
+           <iframe src="html/general.html" frameborder="0"></iframe>
        </section>
        <!--底部 footer-->
    </section>

@@ -1,0 +1,118 @@
+/** 表单 **/
+.mgui-input, .mgui-textarea, .mgui-select{height: 38px; line-height: 1.3; line-height: 38px\9; border-width: 1px; border-style: solid; background-color: #fff; border-radius: 2px;}
+.mgui-input::-webkit-input-placeholder,
+.mgui-textarea::-webkit-input-placeholder,
+.mgui-select::-webkit-input-placeholder{line-height: 1.3;}
+.mgui-input, .mgui-textarea{display: block; width: 100%; padding-left: 10px;}
+.mgui-input:hover, .mgui-textarea:hover{border-color: #D2D2D2 !important;}
+.mgui-input:focus, .mgui-textarea:focus{border-color: #C9C9C9 !important;}
+.mgui-textarea{position: relative; min-height: 100px; height: auto; line-height: 20px; padding: 6px 10px; resize: vertical;}
+.mgui-select{padding: 0 10px;}
+.mgui-form select,
+.mgui-form input[type=checkbox],
+.mgui-form input[type=radio]{display: none;}
+.mgui-form *[lay-ignore]{display: initial;}
+
+.mgui-form-item{margin-bottom: 15px; clear: both; *zoom: 1;}
+.mgui-form-item:after{content:'\20'; clear: both; *zoom: 1; display: block; height:0;}
+.mgui-form-label{position: relative; float: left; display: block; padding: 9px 15px;  width: 80px; font-weight: 400; line-height: 20px; text-align: right;}
+.mgui-form-label-col{display: block; float: none; padding: 9px 0; line-height: 20px; text-align: left;}
+.mgui-form-item .mgui-inline{margin-bottom: 5px; margin-right: 10px;}
+.mgui-input-block, .mgui-input-inline{position: relative;}
+.mgui-input-block{margin-left: 110px; min-height: 36px;}
+.mgui-input-inline{display: inline-block; vertical-align: middle;}
+.mgui-form-item .mgui-input-inline{float: left; width: 190px; margin-right: 10px;}
+.mgui-form-text .mgui-input-inline{width: auto;}
+
+/* 分割块 */.mgui-form-mid{position: relative; float: left; display: block; padding: 9px 0 !important; line-height: 20px; margin-right: 10px;}
+/* 警告域 */.mgui-form-danger:focus
+         ,.mgui-form-danger+.mgui-form-select .mgui-input{border-color: #FF5722 !important;}
+
+
+/* 下拉选择 */.mgui-form-select{position: relative;}
+.mgui-form-select .mgui-input{padding-right: 30px; cursor: pointer;}
+.mgui-form-select .mgui-edge{position: absolute; right: 10px; top: 50%; margin-top: -3px; cursor: pointer; border-width: 6px; border-top-color: #c2c2c2; border-top-style: solid; transition: all .3s; -webkit-transition: all .3s;}
+.mgui-form-select dl{display: none; position: absolute; left: 0; top: 42px; padding: 5px 0; z-index: 999; min-width: 100%; border: 1px solid #d2d2d2; max-height: 300px; overflow-y: auto; background-color: #fff; border-radius: 2px; box-shadow: 0 2px 4px rgba(0,0,0,.12); box-sizing: border-box;}
+.mgui-form-select dl dt,
+.mgui-form-select dl dd{padding: 0 10px; line-height: 36px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.mgui-form-select dl dt{font-size: 12px; color: #999;}
+.mgui-form-select dl dd{cursor: pointer;}
+.mgui-form-select dl dd:hover{background-color: #f2f2f2;}
+.mgui-form-select .mgui-select-group dd{padding-left: 20px;}
+.mgui-form-select dl dd.mgui-select-tips{padding-left: 10px !important; color: #999;}
+.mgui-form-select dl dd.mgui-this{background-color: #5FB878; color: #fff;}
+.mgui-form-select dl dd.mgui-disabled{background-color: #fff;}
+.mgui-form-selected dl{display: block;}
+.mgui-form-selected .mgui-edge{margin-top: -9px; -webkit-transform:rotate(180deg); transform: rotate(180deg);}
+.mgui-form-selected .mgui-edge{margin-top: -3px\0; }
+:root .mgui-form-selected .mgui-edge{margin-top: -9px\0}
+.mgui-form-selectup dl{top: auto; bottom: 42px;}
+.mgui-select-none{margin: 5px 0; text-align: center; color: #999;}
+
+.mgui-select-disabled .mgui-disabled{border-color: #eee !important;}
+.mgui-select-disabled .mgui-edge{border-top-color: #d2d2d2}
+
+/* 复选框 */.mgui-form-checkbox{position: relative; display: inline-block; vertical-align: middle; height: 30px; line-height: 28px; margin-right: 10px; padding-right: 30px; border: 1px solid #d2d2d2; background-color: #fff; cursor: pointer; font-size: 0; border-radius: 2px;  -webkit-transition: .1s linear; transition: .1s linear; box-sizing: border-box;}
+.mgui-form-checkbox:hover{border: 1px solid #c2c2c2;}
+.mgui-form-checkbox *{display: inline-block; vertical-align: middle;}
+.mgui-form-checkbox span{padding: 0 10px; height: 100%; font-size: 14px; background-color: #d2d2d2; color: #fff; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+.mgui-form-checkbox:hover span{background-color: #c2c2c2;}
+.mgui-form-checkbox i{position: absolute; right: 0; width: 30px; color: #fff; font-size: 20px; text-align: center;}
+.mgui-form-checkbox:hover i{color: #c2c2c2;}
+.mgui-form-checked, .mgui-form-checked:hover{border-color: #5FB878;}
+.mgui-form-checked span, .mgui-form-checked:hover span{background-color: #5FB878;}
+.mgui-form-checked i, .mgui-form-checked:hover i{color: #5FB878;}
+.mgui-form-item .mgui-form-checkbox{margin-top: 4px;}
+
+/* 复选框-原始风格 */.mgui-form-checkbox[lay-skin="primary"]{height: auto!important; line-height: normal!important; border: none!important; margin-right: 0; padding-right: 0; background: none;}
+.mgui-form-checkbox[lay-skin="primary"] span{float: right; padding-right: 15px; line-height: 18px; background: none; color: #666;}
+.mgui-form-checkbox[lay-skin="primary"] i{position: relative; top: 0; width: 16px; height: 16px; line-height: 16px; border: 1px solid #d2d2d2; font-size: 12px; border-radius: 2px; background-color: #fff; -webkit-transition: .1s linear; transition: .1s linear;}
+.mgui-form-checkbox[lay-skin="primary"]:hover i{border-color: #5FB878; color: #fff;}
+.mgui-form-checked[lay-skin="primary"] i{border-color: #5FB878; background-color: #5FB878; color: #fff;}
+.mgui-checkbox-disbaled[lay-skin="primary"] span{background: none!important; color: #c2c2c2;}
+.mgui-checkbox-disbaled[lay-skin="primary"]:hover i{border-color: #d2d2d2;}
+.mgui-form-item .mgui-form-checkbox[lay-skin="primary"]{margin-top: 10px;}
+
+/* 复选框-开关风格 */.mgui-form-switch{position: relative; display: inline-block; vertical-align: middle; height: 22px; line-height: 22px; width: 42px; padding: 0 5px; margin-top: 8px; border: 1px solid #d2d2d2; border-radius: 20px; cursor: pointer; background-color: #fff; -webkit-transition: .1s linear; transition: .1s linear;}
+.mgui-form-switch i{position: absolute; left: 5px; top: 3px; width: 16px; height: 16px; border-radius: 20px; background-color: #d2d2d2; -webkit-transition: .1s linear; transition: .1s linear;}
+.mgui-form-switch em{position: absolute; right: 5px; top: 0; width: 25px; padding: 0!important; text-align: center!important; color: #999!important; font-style: normal!important; font-size: 12px;}
+.mgui-form-onswitch{border-color: #5FB878; background-color: #5FB878;}
+.mgui-form-onswitch i{left: 32px; background-color: #fff;}
+.mgui-form-onswitch em{left: 5px; right: auto; color: #fff!important;}
+
+.mgui-checkbox-disbaled{border-color: #e2e2e2 !important;}
+.mgui-checkbox-disbaled span{background-color: #e2e2e2 !important;}
+.mgui-checkbox-disbaled:hover i{color: #fff !important;}
+
+/* 单选框 */
+*[lay-radio]{display: none;}
+.mgui-form-radio{display: inline-block; vertical-align: middle; line-height: 28px; margin: 6px 10px 0 0; padding-right: 10px; cursor: pointer; font-size: 0;}
+.mgui-form-radio *{display: inline-block; vertical-align: middle; font-size: 14px;}
+.mgui-form-radio>i{margin-right: 8px; font-size: 22px; color: #c2c2c2;}
+.mgui-form-radioed>i,.mgui-form-radio>i:hover{color: #5FB878;}
+.mgui-radio-disbaled>i{color: #e2e2e2 !important;}
+
+/* 表单方框风格 */.mgui-form-pane .mgui-form-label{width: 110px; padding: 8px 15px; height: 38px; line-height: 20px; border-width: 1px; border-style: solid; border-radius: 2px 0 0 2px; text-align: center; background-color: #FBFBFB; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box;}
+.mgui-form-pane .mgui-input-inline{margin-left: -1px;}
+.mgui-form-pane .mgui-input-block{margin-left: 110px; left: -1px;}
+.mgui-form-pane .mgui-input{border-radius: 0 2px 2px 0;}
+.mgui-form-pane .mgui-form-text .mgui-form-label{float: none; width: 100%; border-radius: 2px; box-sizing: border-box; text-align: left;}
+.mgui-form-pane .mgui-form-text .mgui-input-inline{display: block; margin: 0; top: -1px; clear: both;}
+.mgui-form-pane .mgui-form-text .mgui-input-block{margin: 0; left: 0; top: -1px;}
+.mgui-form-pane .mgui-form-text .mgui-textarea{min-height: 100px; border-radius: 0 0 2px 2px;}
+.mgui-form-pane .mgui-form-checkbox{margin: 4px 0 4px 10px;}
+.mgui-form-pane .mgui-form-switch,
+.mgui-form-pane .mgui-form-radio{margin-top: 6px; margin-left: 10px; }
+.mgui-form-pane .mgui-form-item[pane]{position: relative; border-width: 1px; border-style: solid;}
+.mgui-form-pane .mgui-form-item[pane] .mgui-form-label{position: absolute; left: 0; top: 0; height: 100%; border-width: 0px; border-right-width: 1px;}
+.mgui-form-pane .mgui-form-item[pane] .mgui-input-inline{margin-left: 110px;}
+
+/** 表单响应式 **/
+@media screen and (max-width: 450px) {
+  .mgui-form-item .mgui-form-label{text-overflow: ellipsis; overflow: hidden; white-space: nowrap;}
+  .mgui-form-item .mgui-inline{display: block; margin-right: 0; margin-bottom: 20px; clear: both;}
+  .mgui-form-item .mgui-inline:after{content:'\20'; clear:both; display:block; height:0;}
+  .mgui-form-item .mgui-input-inline{display: block; float: none; left: -3px; width: auto; margin: 0 0 10px 112px; }
+  .mgui-form-item .mgui-input-inline+.mgui-form-mid{margin-left: 110px; top: -5px; padding: 0;}
+  .mgui-form-item .mgui-form-checkbox{margin-right: 5px; margin-bottom: 5px;}
+}

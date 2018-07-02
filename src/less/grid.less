@@ -1,87 +1,38 @@
 /*响应式栅格样式*/
-/* 基本布局 */
-.mgui-main{
+
+/* 栅格布局 start */
+.mgui-container{
+  /*居中布局*/
   position: relative;
-  width: 1140px;
   margin: 0 auto;
-}
-.mgui-header{
-  //头部样式
-  position: relative;
-  z-index: 1000;
-  height: 60px;
-  a{
-    &:hover{
-      /*transition过渡效果 pdtd:property(例如width,height) duration  timing-function(快慢效果)  delay：规定从何时开始 */
-      transition: all .5s;
-      -webkit-transition: all .5s;
-      -moz-transition: all .5s;
-      -o-transition: all .5s;
-      -ms-transition:all .5s;
-    }
-  }
-}
-.mgui-side{
-  /*左侧样式固定*/
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 999;
-  width: 200px;
-  overflow-x: hidden;
-}
-.mgui-side-scroll{
-  position: relative;
-  width: 220px;
-  height: 100%;
-  overflow-x: hidden;
-}
-.mgui-body{
-  /*正文部分或者是右侧内容部分*/
-  position: absolute;
-  left: 200px;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 998;
-  width: auto;
-  overflow: hidden;
-  overflow-y: auto;
+  padding: 0 15px;
   box-sizing: border-box;
 }
-
-/* 后台框架大布局 */
-.mgui-layout-body{
-  overflow: hidden;
+.mgui-fluid{
+  /*流式布局*/
+  position: relative;
+  margin: 0 auto;
+  padding: 0 15px;
 }
-.mgui-layout-admin{
-
+.mgui-row{
+   &:before,&:after{
+     content: '';
+     display: block;
+     clear: both;
+   }
 }
-.mgui-layout-admin .mgui-header{
-  background-color: #23262E;
-}
-.mgui-layout-admin .mgui-side{top: 60px; width: 200px; overflow-x: hidden;}
-.mgui-layout-admin .mgui-body{top: 60px; bottom: 44px;}
-.mgui-layout-admin .mgui-main{width: auto; margin: 0 15px;}
-.mgui-layout-admin .mgui-footer{position: fixed; left: 200px; right: 0; bottom: 0; height: 44px; line-height: 44px; padding: 0 15px; background-color: #eee;}
-.mgui-layout-admin .mgui-logo{position: absolute; left: 0; top: 0; width: 200px; height: 100%; line-height: 60px; text-align: center; color: #009688; font-size: 16px;}
-.mgui-layout-admin .mgui-header .mgui-nav{background: none;}
-.mgui-layout-left{position: absolute !important; left: 200px; top: 0;}
-.mgui-layout-right{position: absolute !important; right: 0; top: 0;}
-
-/* 栅格布局 */
-.mgui-container{position: relative; margin: 0 auto; padding: 0 15px; box-sizing: border-box;}
-.mgui-fluid{position: relative; margin: 0 auto; padding: 0 15px;}
-
-.mgui-row:before, .mgui-row:after{content: ''; display: block; clear: both;}
 .mgui-col-xs1, .mgui-col-xs2, .mgui-col-xs3, .mgui-col-xs4, .mgui-col-xs5, .mgui-col-xs6, .mgui-col-xs7, .mgui-col-xs8, .mgui-col-xs9, .mgui-col-xs10, .mgui-col-xs11, .mgui-col-xs12
 ,.mgui-col-sm1, .mgui-col-sm2, .mgui-col-sm3, .mgui-col-sm4, .mgui-col-sm5, .mgui-col-sm6, .mgui-col-sm7, .mgui-col-sm8, .mgui-col-sm9, .mgui-col-sm10, .mgui-col-sm11, .mgui-col-sm12
 ,.mgui-col-md1, .mgui-col-md2, .mgui-col-md3, .mgui-col-md4, .mgui-col-md5, .mgui-col-md6, .mgui-col-md7, .mgui-col-md8, .mgui-col-md9, .mgui-col-md10, .mgui-col-md11, .mgui-col-md12
-,.mgui-col-lg1, .mgui-col-lg2, .mgui-col-lg3, .mgui-col-lg4, .mgui-col-lg5, .mgui-col-lg6, .mgui-col-lg7, .mgui-col-lg8, .mgui-col-lg9, .mgui-col-lg10, .mgui-col-lg11, .mgui-col-lg12
-{position: relative; display: block; box-sizing: border-box;}
+,.mgui-col-lg1, .mgui-col-lg2, .mgui-col-lg3, .mgui-col-lg4, .mgui-col-lg5, .mgui-col-lg6, .mgui-col-lg7, .mgui-col-lg8, .mgui-col-lg9, .mgui-col-lg10, .mgui-col-lg11, .mgui-col-lg12 {
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+}
 
-.mgui-col-xs1, .mgui-col-xs2, .mgui-col-xs3, .mgui-col-xs4, .mgui-col-xs5, .mgui-col-xs6, .mgui-col-xs7, .mgui-col-xs8, .mgui-col-xs9, .mgui-col-xs10, .mgui-col-xs11, .mgui-col-xs12{float: left;}
+.mgui-col-xs1, .mgui-col-xs2, .mgui-col-xs3, .mgui-col-xs4, .mgui-col-xs5, .mgui-col-xs6, .mgui-col-xs7, .mgui-col-xs8, .mgui-col-xs9, .mgui-col-xs10, .mgui-col-xs11, .mgui-col-xs12{
+  float: left;
+}
 .mgui-col-xs1{width: 8.33333333%;}
 .mgui-col-xs2{width: 16.66666667%;}
 .mgui-col-xs3{width: 25%;}
@@ -246,3 +197,5 @@
 .mgui-col-space25>*{padding: 12.5px;}
 .mgui-col-space30{margin: -15px;}
 .mgui-col-space30>*{padding: 15px;}
+
+/*栅格布局 end*/
