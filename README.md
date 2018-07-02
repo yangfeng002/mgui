@@ -93,6 +93,7 @@
      cnpm install gulp-csso --save-dev  //压缩优化css代码
      cnpm install del --save-dev  //由于我们是自动生成文件，我们不想旧文件掺杂进来
      cnpm install run-sequence --save-dev //保证任务执行的顺序
+     cnpm install gulp-rename --save-dev 修改文件名，例如将demo.css修改为demo.min.css，一般配合gulp-minify-css/gulp-uglify压缩插件一起使用
 
      npm install browser-sync --save-dev  //使用浏览器自动刷新
 
@@ -233,5 +234,37 @@
            );
        });
 
+      k）gulp-rename使用方法
+      例1：与插件gulp-clean-css(不会用？请参考)组合使用，实现对CSS文件压缩后更名为 xxx.min.css
 
+      var gulp        = require('gulp'),
+          minifyCss   = require('gulp-minify-css'),
+          rename      = require('gulp-rename'),
+          pump        = require('pump');
+      gulp.task('testRenameCss', function(cb) {
+          pump([
+              gulp.src('src/css/*.css'),
+              rename({suffix: '.min'})
+              minifyCss({
+                  keepSpecialComments: '*'
+              }),
+              gulp.dest('dist/css')
+          ])
+      });
+
+      例2：与插件gulp-uglify(不会用？请参考)组合使用，实现对JS文件压缩后更名为 xxx.min.js
+
+      var gulp       = require('gulp'),
+          minifyCss  = require('gulp-uglify'),
+          rename     = require('gulp-rename'),
+          pump       = require('pump');
+
+      gulp.task('testRenameJs', function(cb) {
+          pump([
+              gulp.src('src/js/*.js'),
+              rename({suffix: '.min'}),
+              uglify(),
+              gulp.dest('dist/js')
+          ])
+      });
 
